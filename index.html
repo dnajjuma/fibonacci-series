@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+</head>
+<body>
+    <h1>Fibonacci Series</h1>
+    <p>Enter the number of Fibonacci numbers you want to generate:</p>
+    <input type="number" id="fibInput" min="1" value="10">
+    <button onclick="generateFib()">Generate</button>
+    <p id="fibResult"></p>
+
+    <script>
+        function fibonacci(n) {
+            let fib = [0, 1];
+
+            for (let i = 2; i <= n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+
+            return fib.slice(0, n + 1);
+        }
+
+        function generateFib() {
+            const n = parseInt(document.getElementById('fibInput').value);
+            const fibSeries = fibonacci(n);
+            document.getElementById('fibResult').textContent = `Fibonacci series of length ${n}: ${fibSeries.join(', ')}`;
+        }
+    </script>
+</body>
+</html>
